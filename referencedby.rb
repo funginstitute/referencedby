@@ -14,4 +14,7 @@ patentpage = Nokogiri::HTML(open(refquery))
 
 doc = patentpage.xpath("//body/table")
 rows = doc.xpath("//table//tr[1 <= position() and position() < 200]/td[2]/a/text()")
-puts rows
+#puts rows
+rows.each do |r|
+  puts "0" + r.to_s.gsub(/,/,'')
+end
