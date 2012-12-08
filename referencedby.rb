@@ -1,9 +1,38 @@
-  require 'rubygems'
-  require 'nokogiri'
-  require 'open-uri'
+#!/usr/bin/env ruby
 
-  list_of_presidents = Nokogiri::HTML(open('http://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States'))
+require 'rubygems'
+require 'nokogiri'
+require 'open-uri'
 
+list_of_presidents = Nokogiri::HTML.parse(open('http://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States'))
+
+patent = "5136185"
+patentquery = "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&co1=AND&d=PTXT&s1=#{patent}.PN.&OS=PN/#{patent}&RS=PN/#{patent}"
+
+refquery = "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2Fsearch-adv.htm&r=0&f=S&l=50&d=PALL&Query=ref/#{patent}"
+
+patentpage = Nokogiri::HTML(open(refquery))
+
+puts patentpage
+
+puts "============================================================================="
+
+#doc = patentpage.xpath("//table/tr[2]/td[1]")
+doc = patentpage.at_css("table")
+
+puts doc
+
+puts "============================================================================="
+
+for el in doc.css('html').children
+  puts el.name
+    for el2 in el.children
+      puts "--" + el2.name + " " + el2.attributes.to_json
+    end
+end
+puts "============================================================================="
+
+=begin
   an_array_of_links = list_of_presidents.xpath("//tr/td[3]/a[1]")
 
   ## These two variables will be added to throughout the execution of the script
@@ -62,3 +91,4 @@
   the_final_value = total_age/prez_count.to_f
   puts "#{prez_count} presidents were counted, their age totaling: #{total_age}."
   puts "The average of their ages is #{the_final_value}"
+=end
