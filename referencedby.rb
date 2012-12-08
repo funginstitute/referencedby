@@ -13,24 +13,30 @@ refquery = "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=
 
 patentpage = Nokogiri::HTML(open(refquery))
 
-puts patentpage
+#puts patentpage
 
 puts "============================================================================="
 
-#doc = patentpage.xpath("//table/tr[2]/td[1]")
-doc = patentpage.at_css("table")
-
+#doc = patentpage.xpath("//table//tr[2]//td[1]")
+#doc = patentpage.xpath("//table//tr")
+doc = patentpage.xpath("//body/table")
+#doc = patentpage.at_css("table tr td")
 puts doc
 
 puts "============================================================================="
 
-for el in doc.css('html').children
-  puts el.name
-    for el2 in el.children
-      puts "--" + el2.name + " " + el2.attributes.to_json
-    end
-end
+rows = doc.xpath("//table//tr[2]/td[2]")
+puts rows
 puts "============================================================================="
+
+#doc = patentpage.xpath("/x:html/x:body/x:table/x:tbody/x:tr[2]/x:td[4]/x:a")
+#doc = patentpage.xpath("//html//body//table//tbody//tr[2]//td[2]//text()")
+#doc = patentpage.xpath("//table//tbody//tr[2]//td[2]//text()")
+#doc = patentpage.xpath("//table//tbody//tr")
+
+#puts doc
+
+#puts "============================================================================="
 
 =begin
   an_array_of_links = list_of_presidents.xpath("//tr/td[3]/a[1]")
