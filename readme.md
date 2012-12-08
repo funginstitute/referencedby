@@ -5,5 +5,5 @@ patent number which are referencing a given patent.
 
 ## todo
 
-* Wrap the kernal in a class, initialize with desired patent number,
+* Wrap the kernel in a class, initialize with desired patent number,
   hold xpath parsed results in `attr_accessible :patents`.
