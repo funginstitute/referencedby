@@ -1,6 +1,6 @@
 # Kernel for obtaining referenced-by patents
 
-`referenced-by` is a simple Ruby script which will acquire the list of
+`referencedby.rb` is a simple Ruby script which will acquire the list of
 patent number which are referencing a given patent.
 
 ## todo
