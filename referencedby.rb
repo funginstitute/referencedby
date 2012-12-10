@@ -5,6 +5,10 @@ require 'nokogiri'
 require 'open-uri'
 require 'rspec'
 
+=begin
+xpath for google patent page http://www.google.com/patents/US5136185
+//*[@id="patent_referenced_by_v"]/table/tbody/tr[2]
+=end
 
 class ReffedBy
 
