@@ -1,0 +1,26 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    diff-lcs (1.1.3)
+    ensure_valid_encoding (0.5.3)
+    marc (0.5.0)
+    nokogiri (1.5.6)
+    openurl (0.4.2)
+      ensure_valid_encoding
+      marc
+    rspec (2.12.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
+    rspec-core (2.12.2)
+    rspec-expectations (2.12.1)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.12.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  nokogiri
+  openurl (~> 0.4.2)
+  rspec
