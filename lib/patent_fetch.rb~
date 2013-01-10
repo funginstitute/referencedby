@@ -7,6 +7,7 @@ load 'patent_scraper.rb'
 
 class PatentFetch
 	scrapedpatent = PatentScraper.new
+#    doc = patentpage.xpath("//body/table")
     doc = (scrapedpatent.patentpage).xpath("//body/table")
 
     rows = doc.xpath("//table//tr[1 <= position() and position() < 200]/td[2]/a/text()")
