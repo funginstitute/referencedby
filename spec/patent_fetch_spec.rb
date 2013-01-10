@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe PatentFetch do
+describe PatentFetcher do
 	it "instantial itself" do
-		pf = PatentFetch.new
+		pf = PatentFetcher.new
 	end
 end
