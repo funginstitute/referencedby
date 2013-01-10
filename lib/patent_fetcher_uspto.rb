@@ -23,7 +23,7 @@ class PatentFetcher
   def patentpage
     @patentpage
   end
-
-fetchedpatent = PatentFetcher.new(ARGV[0])
-
+  
 end
+
+PatentFetcher.new(ARGV[0])

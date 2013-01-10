@@ -23,4 +23,6 @@ class PatentFetcher
   def patentpage
     @patentpage
   end
+
+  
 end
