@@ -16,4 +16,4 @@ class GoogleFetcher
 
 end
 
-PatentFetcher.new(ARGV[0])
+GoogleFetcher.new(ARGV[0])
