@@ -4,4 +4,5 @@ require 'rubygems'
 
 #require_relative '../lib/uspto_fetcher'
 require_relative '../lib/uspto_scraper'
+require_relative '../lib/google_scraper'
 #require_relative '../lib/patent_generator'
