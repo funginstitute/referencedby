@@ -1,36 +1,29 @@
-#!/usr/bin/env ruby
-
-require_relative 'patent_fetcher'
 
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 require 'rspec'
 
-=begin
-xpath for google patent page http://www.google.com/patents/US5136185
-//*[@id="patent_referenced_by_v"]/table/tbody/tr[2]
-=end
+class USPTOScraper
 
-# this scrapes a fetched page.
-class PatentScraper
-	@rows # holds a list of patent numbers
+	attr_accessor :count
+
 	def initialize(patent) # default patent
-		fetchedpatent = PatentFetcher.new(patent)
-		doc = (fetchedpatent.patentpage).xpath("//body/table")
-
+		@html = "../data/uspto/#{patent}.html"
+		doc = @html.xpath("//body/table")
 		rows = doc.xpath("//table//tr[1 <= position() and position() < 200]/td[2]/a/text()")
-		
-		puts "scraped patents:"
-		rows.each do |r|
+		# list_citations(rows)
+		@count = rows.size
+	end
+
+  	def list_citations(rows)
+  	  	rows.each do |r|
 		  puts "0" + r.to_s.gsub(/,/,'')
 		end
 	end
-	
-	def rows
-		@rows
+
+	def output_count
+		print @count, "\n"
 	end
 
-patent = "5539337"
-refby = PatentScraper.new(patent)
 end
