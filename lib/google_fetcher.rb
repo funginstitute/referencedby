@@ -13,7 +13,7 @@ class GoogleFetcher
     rescue OpenURI::HTTPError
     	patentpage = "link broken"
  	end
-    outFile = File.new("../data/google/#{argv}.html", "a+")
+    outFile = File.new("./data/google/#{argv}.html", "a+")
     outFile.puts(patentpage)
     outFile.close
   end

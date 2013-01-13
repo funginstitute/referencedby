@@ -13,7 +13,7 @@ class USPTOScraper
 		doc = patentpage.xpath("//body/table")
 		rows = doc.xpath("//table//tr[1 <= position() and position() < 200]/td[2]/a/text()")
 		# list_citations(rows)
-		outFile = File.open("../reports/uspto/uspto.csv", "a+")
+		outFile = File.open("./reports/uspto/uspto.csv", "a+")
 		@count = rows.length
 		outFile.print("\n0#{patent}, #{@count}")
 		outFile.close

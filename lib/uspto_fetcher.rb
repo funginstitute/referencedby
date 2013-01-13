@@ -13,7 +13,7 @@ class USPTOFetcher
     rescue OpenURI::HTTPError
     	patentpage = "link broken"
  	end
-    outFile = File.new("../data/uspto/#{argv}.html", "a+")
+    outFile = File.new("./data/uspto/#{argv}.html", "a+")
     outFile.puts(patentpage)
     outFile.close
   end
