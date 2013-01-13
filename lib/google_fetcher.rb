@@ -8,7 +8,11 @@ require 'rspec'
 class GoogleFetcher
 
   def initialize(argv)
-    patentpage = Nokogiri::HTML(open("http://www.google.com/patents/US#{argv}"))
+  	begin
+    	patentpage = Nokogiri::HTML(open("http://www.google.com/patents/US#{argv}"))
+    rescue OpenURI::HTTPError
+    	patentpage = "link broken"
+ 	end
     outFile = File.new("../data/google/#{argv}.html", "a+")
     outFile.puts(patentpage)
     outFile.close
