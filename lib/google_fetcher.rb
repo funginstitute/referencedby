@@ -16,4 +16,4 @@ class GoogleFetcher
 
 end
 
-GoogleFetcher.new(ARGV[0])
+#GoogleFetcher.new(ARGV[0])
