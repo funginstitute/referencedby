@@ -9,7 +9,7 @@ class USPTOScraper
 	attr_accessor :count
 
 	def initialize(patent) # default patent
-		patentpage = Nokogiri::HTML(open("../data/uspto/#{patent}.html"))
+		patentpage = Nokogiri::HTML(open("./data/uspto/#{patent}.html"))
 		doc = patentpage.xpath("//body/table")
 		rows = doc.xpath("//table//tr[1 <= position() and position() < 200]/td[2]/a/text()")
 		# list_citations(rows)
@@ -26,7 +26,7 @@ class USPTOScraper
 	end
 
 	def output_count
-		print @count, "\n"
+		return @count
 	end
 
 end

@@ -13,16 +13,31 @@ require_relative 'uspto_scraper'
 
 class PatentGenerator
 	@patentlist
+
+	
+	
+
 	def initialize(arg, from = 4000000, to = 8000000)
-		to = to + 1 # ensures that the range include 'to'
-		@patentlist = arg.times.map{ from + Random.rand(to - from) }
-		@patentlist.each do |patent|
-			GoogleFetcher.new(patent)
-			GoogleScraper.new(patent)
-			USPTOFetcher.new(patent)
-			USPTOScraper.new(patent)
+		csv_data = {}
+		count = 0
+		File.open("./cleantechcounts1_unix.csv", "r").each_line do |line|
+			line = line.strip.split(' ')
+			csv_data[count] = line
+			#puts csv_data[count]
+			count = count + 1
 		end
-	end
+
+		@patentlist = arg.times.map{ csv_data[Random.rand(csv_data.length)] }
+		@patentlist.each do |patent, filecount|
+			GoogleFetcher.new(patent)
+			googlecount = GoogleScraper.new(patent).output_count
+			USPTOFetcher.new(patent)
+			usptocount = USPTOScraper.new(patent).output_count
+			outFile = File.open("./reports/reports_all.csv", "a+")
+			outFile.print("\n0#{patent}, #{filecount}, #{usptocount}, #{googlecount}")
+			outFile.close
+		end
+	end 
 
 	def patentlist
 		@patentlist

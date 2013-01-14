@@ -26,7 +26,7 @@ class GoogleScraper
 	end
 
 	def output_count
-		print @count, "\n"
+		return @count
 	end
 
 end
