@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 
 require 'rubygems'
 require 'nokogiri'
@@ -19,5 +18,3 @@ class GoogleFetcher
   end
 
 end
-
-#GoogleFetcher.new(ARGV[0])

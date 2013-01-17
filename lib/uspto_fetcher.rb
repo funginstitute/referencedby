@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 
 require 'rubygems'
 require 'nokogiri'
@@ -17,7 +16,4 @@ class USPTOFetcher
     outFile.puts(patentpage)
     outFile.close
   end
-
 end
-
-#USPTOFetcher.new(ARGV[0])
