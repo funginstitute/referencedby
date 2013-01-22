@@ -3,6 +3,7 @@
 import unittest
 import sys
 import sqlite3
+import csv
 
 sys.path.append('.')
 sys.path.append('..')
@@ -10,6 +11,16 @@ sys.path.append('..')
 class TestRefClean(unittest.TestCase):
 
 	def setUp(self):
+		conn = sqlite3.connect(":memory:")
+		cursor = conn.cursor()
+		cursor.execute("create table cleancites(patent TEXT, referencedby TEXT, date TEXT)")
+		reader = csv.reader(open('./fixtures/referencedby.csv', 'r'))
+		for row in reader:
+			to_db = [unicode(row[0], "utf8"), unicode(row[1], "utf8"), unicode(row[2], "utf8")]
+			cursor.execute("insert into cleancites (patent, referencedby, date) VALUES (?, ?, ?);", to_db)
+		conn.commit()
+
+	def test_foo(self):
 		print "foo"
 
 if __name__ == '__main__':
