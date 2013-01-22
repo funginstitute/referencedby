@@ -8,6 +8,10 @@ import csv
 sys.path.append('.')
 sys.path.append('..')
 
+def regexp(expr, item):
+	reg = re.compile(expr)
+	return reg.search(item) is not None
+
 class TestRefClean(unittest.TestCase):
 
 	def setUp(self):
