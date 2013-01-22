@@ -4,6 +4,7 @@ import unittest
 import sys
 import sqlite3
 import csv
+import re
 
 sys.path.append('.')
 sys.path.append('..')
@@ -23,6 +24,13 @@ class TestRefClean(unittest.TestCase):
 			to_db = [unicode(row[0], "utf8"), unicode(row[1], "utf8"), unicode(row[2], "utf8")]
 			cursor.execute("insert into cleancites (patent, referencedby, date) VALUES (?, ?, ?);", to_db)
 		conn.commit()
+		conn.create_function("REGEXP", 2, regexp)
+		#cursor.execute("select * from cleancites where patent REGEXP ?", ['^0\d{7}\Z'])
+		cursor.execute("select * from cleancites where patent REGEXP ?", ['2007'])
+		data = cursor.fetchall()
+		print(data)
+
+
 
 	def test_foo(self):
 		print "foo"
