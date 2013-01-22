@@ -18,24 +18,22 @@ def regexp(expr, item):
 class TestRefClean(unittest.TestCase):
 
     def setUp(self):
-        conn = sqlite3.connect(":memory:")
-        cursor = conn.cursor()
-        cursor.execute("create table cleancites(patent TEXT, referencedby TEXT, date TEXT)")
+        self.conn = sqlite3.connect(":memory:")
+        self.cursor = self.conn.cursor()
+        self.cursor.execute("create table cleancites(patent TEXT, referencedby TEXT, date TEXT)")
         reader = csv.reader(open('./fixtures/referencedby.csv', 'r'))
         for row in reader:
             to_db = [unicode(row[0], "utf8"), unicode(row[1], "utf8"), unicode(row[2], "utf8")]
-            cursor.execute("insert into cleancites (patent, referencedby, date) VALUES (?, ?, ?);", to_db)
-        conn.commit()
-        conn.create_function("REGEXP", 2, regexp)
-        #cursor.execute("select * from cleancites where patent REGEXP ?", ['^0\d{7}\Z'])
-        cursor.execute("select * from cleancites where patent REGEXP ?", ['2007'])
-        data = cursor.fetchall()
-        print(data)
+            self.cursor.execute("insert into cleancites (patent, referencedby, date) VALUES (?, ?, ?);", to_db)
+        self.conn.commit()
 
+    def test_select(self):
+        self.conn.create_function("REGEXP", 2, regexp)
+        #self.cursor.execute("select * from cleancites where patent REGEXP ?", ['^0\d{7}\Z'])
+        self.cursor.execute("select * from cleancites where patent REGEXP ?", ['2007'])
+        data = self.cursor.fetchall()
+	assert([(u'2007-087468', u'7843743', u'3/13/08')] == data)
 
-
-    def test_foo(self):
-        print "foo"
 
 if __name__ == '__main__':
     unittest.main()
