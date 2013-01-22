@@ -11,9 +11,7 @@ import re
 sys.path.append('.')
 sys.path.append('..')
 
-def regexp(expr, item):
-    reg = re.compile(expr)
-    return reg.search(item) is not None
+from uspatent import regexp
 
 class TestRefClean(unittest.TestCase):
 
