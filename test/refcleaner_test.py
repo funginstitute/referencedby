@@ -12,6 +12,7 @@ sys.path.append('.')
 sys.path.append('..')
 
 from uspatent import regexp
+from uspatent import find_patents
 
 class TestRefClean(unittest.TestCase):
 
@@ -27,9 +28,7 @@ class TestRefClean(unittest.TestCase):
 
     def test_select(self):
         self.conn.create_function("REGEXP", 2, regexp)
-        #self.cursor.execute("select * from cleancites where patent REGEXP ?", ['^0\d{7}\Z'])
-        self.cursor.execute("select * from cleancites where patent REGEXP ?", ['2007'])
-        data = self.cursor.fetchall()
+        data = find_patents(self.cursor, '2007') # self.cursor.fetchall()
 	assert([(u'2007-087468', u'7843743', u'3/13/08')] == data)
 
 
