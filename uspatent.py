@@ -12,3 +12,10 @@ def regexp(expr, item):
 def find_patents(cursor, regexp):
     cursor.execute("select * from cleancites where patent REGEXP ?", [regexp])
     return cursor.fetchall()
+
+# dumb name, need something, anything to get started
+def run_script():
+    print "running script"
+
+if __name __ == '__main__':
+    run_script()
