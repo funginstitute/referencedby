@@ -2,6 +2,18 @@
 
 # vim: tabstop=4:softtabstop=4:shiftwidth=4:expandtab
 
+# This script is a first cut at extracting various types of patents
+# from the USPTO databased citations. The citations consist of
+# US patent grant numbers, US patent application document number (DN),
+# and foreign patents with a variety of letter/number combinations.
+
+# The idea is to search using a specified regex, as shown by the
+# find_patents function. 
+
+# This code is currently unfinished, as the need has passed.
+# The test code contains more details on how the code is
+# invoked.
+
 import sqlite3
 import re
 
