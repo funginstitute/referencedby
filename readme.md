@@ -34,3 +34,9 @@ check results visually.
 * Wrap the kernel in a class, initialize with desired patent number,
   hold xpath parsed results in `attr_accessible :patents`.
 
+## Downloads
+
+Most recently *verified* references can be found at [https://s3-us-west-1.amazonaws.com/fidownloads/reffedby.csv.zip](https://s3-us-west-1.amazonaws.com/fidownloads/reffedby.csv.zip)
+
+Most recent references (unverified) can be found at [https://s3-us-west-1.amazonaws.com/fidownloads/reffedby_mar262013.csv.zip](https://s3-us-west-1.amazonaws.com/fidownloads/reffedby_mar262013.csv.zip)
+
