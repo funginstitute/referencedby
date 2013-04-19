@@ -38,5 +38,7 @@ check results visually.
 
 Most recently *verified* references can be found at [https://s3-us-west-1.amazonaws.com/fidownloads/reffedby.csv.zip](https://s3-us-west-1.amazonaws.com/fidownloads/reffedby.csv.zip)
 
-Most recent references (unverified) can be found at [https://s3-us-west-1.amazonaws.com/fidownloads/reffedby_mar262013.csv.zip](https://s3-us-west-1.amazonaws.com/fidownloads/reffedby_mar262013.csv.zip)
+Most recent references (unverified) can be found at [https://s3-us-west-1.amazonaws.com/fidownloads/citations_mar262013.csv.zip](https://s3-us-west-1.amazonaws.com/fidownloads/citations_mar262013.csv.zip)
+
+`citations_mar262013.csv` is a table of forward citations. The first column is a patent number, the second column is a patent that it references.
 
